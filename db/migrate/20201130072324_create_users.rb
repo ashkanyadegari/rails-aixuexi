@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :open_id
       t.string :avatar
-      t.references :company, null: false, foreign_key: true
+      t.references :company, foreign_key: true
       t.integer :user_points
 
       t.timestamps
