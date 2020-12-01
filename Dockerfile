@@ -1,4 +1,4 @@
-FROM ruby:2.6.0
+FROM ruby:2.6.6
 # Install NodeJS and Yarn
 RUN apt-get update
 RUN apt-get -y install curl
