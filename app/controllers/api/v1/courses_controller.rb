@@ -1,8 +1,10 @@
 class Api::V1::CoursesController < Api::V1::BaseController
-  before_action :set_course, only: [:show, :edit, :destroy]
+  before_action :set_course, only: [:show, :edit, :destroy, :update]
+  skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy]
 
   def index
     @courses = Course.all
+    # render json: @courses
   end
 
   def show

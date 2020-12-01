@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts 'Destroying all seeds'
+Course.destroy_all
+
+5.times do
+  course = Course.new(name: Faker::Name.first_name, description: Faker::Marketing.buzzwords)
+  file = URI.open("https://picsum.photos/600")
+  course.photos.attach(io: file, filename: "#{course.name}.png", content_type: 'image/png')
+  course.save
+  puts "#{course.name} got created"
+end
+
