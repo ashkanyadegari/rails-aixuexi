@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     namespace :v1 do
     put "/login", to: "login#login"
     resources :users, only: [:index, :show, :create]
-    resources :courses, only: [:index, :show]
+    resources :courses, only: [:index, :show, :create, :destroy, :update]
     resources :answers, only: [:show, :create]
     #   # /answers/:id/questions
     #   resources :questions

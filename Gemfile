@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'activestorage-aliyun'
 gem 'faker'
 gem 'nokogiri'
+gem "open-uri"
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
