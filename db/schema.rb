@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_072324) do
     t.string "name"
     t.string "open_id"
     t.string "avatar"
-    t.bigint "company_id", null: false
+    t.bigint "company_id"
     t.integer "user_points"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
