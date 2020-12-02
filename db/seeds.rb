@@ -9,9 +9,12 @@
 puts 'Destroying all seeds'
 Course.destroy_all
 
+content = ["As proof of his bar’s higher intent, his drinks program extends beyond picking fruit from within walking distance of his bar. At last count, the bar produced just 40g or so of waste on a busy Friday night – the size of a wallet and a phone, but lighter – which sometimes unfortunately include tissues that wheezy customers bring in.", "The bar runs fully on solar energy, and contrary to procurement wisdom, his team shops for ingredients at local wet markets that don’t wrap their produce in plastic and then tote it back in their own reuseable bags.", "While his drive towards a zero-waste bar program is ahead of the curve and isn’t always practical for every bar to sign on to, he believes that the industry as a whole can each do their bit to tip the scales in the environment’s favour. ", "As a community, we really have to diversify how we look at acidity, he says. Instead of usual suspects like limes and lemons, Native uses vinegars, yoghurt whey and ants to add zip to their drinks.", "The bar pays a glass recycling service $40 a month to take away its used bottles. It’s just $40 man, get with the program,"]
+sum = 0
+
 
 5.times do
-  course = Course.new(name: Faker::Name.first_name, description: Faker::Books::Dune.quote)
+  course = Course.new(name: Faker::Name.first_name, description: content[sum])
   file = URI.open("https://picsum.photos/600")
   course.photos.attach(io: file, filename: "#{course.name}.png", content_type: 'image/png')
   course.save
@@ -35,6 +38,7 @@ Course.destroy_all
     puts "#{choice.answer} got created"
   end
   end
+  sum += 1
 end
 
 # puts 'Destroying all seeds'
