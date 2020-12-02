@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :create]
     resources :courses, only: [:index, :show, :create, :destroy, :update]
     resources :answers, only: [:show, :create]
+    resources :questions, only: [:index ]
+    # get "/questions", to: "questions#actionname"
+    # resrouces :
     #   # /answers/:id/questions
     #   resources :questions
     #   # /answers/:id/choices
