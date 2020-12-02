@@ -10,7 +10,7 @@ puts 'Destroying all seeds'
 Course.destroy_all
 
 5.times do
-  course = Course.new(name: Faker::Name.first_name, description: Faker::Marketing.buzzwords)
+  course = Course.new(name: Faker::Name.first_name, description: Faker::Books::Dune.quote)
   file = URI.open("https://picsum.photos/600")
   course.photos.attach(io: file, filename: "#{course.name}.png", content_type: 'image/png')
   course.save
