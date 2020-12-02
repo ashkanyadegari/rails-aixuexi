@@ -1,13 +1,13 @@
 class Api::V1::QuestionsController < Api::V1::BaseController
   def index
-    # taking in a course id
+    course_id = params[:course_id]
     # Find all the questions base on the course id
-    @quesion = Question.find(params[:id])
-    # @questions = Question.all
+    @questions = Question.where(course_id: course_id)
+    # render json: @questions
   end
 
   # def create
-  #   @question = Question.find(params[:question_id])
+  #   @question = Question.find(params[:course_id])
   #   @choice = Choice.new(choice_params@story = Story.find(params[:id])
   #   @choice.question = @question
   # if @choice.save
@@ -17,6 +17,4 @@ class Api::V1::QuestionsController < Api::V1::BaseController
   # end
   # end
 end
-
-
 # link_to "Label", :controller => :my_controller, :action => :index
