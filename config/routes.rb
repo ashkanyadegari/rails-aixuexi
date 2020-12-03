@@ -19,6 +19,12 @@ Rails.application.routes.draw do
     #   resources :choices
     end
   end
-  resources :courses
+  resources :courses do
+    resources :questions
+  end
+
+  resources :questions do
+    resources :choices
+  end
 end
 
