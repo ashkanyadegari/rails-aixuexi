@@ -2,7 +2,6 @@
   <h1><%= @course.name %></h1>
   <%= link_to "Back to all Courses", root_path %>
 
-
   <div class="row">
     <div class="col-sm-12 col-md-6">
       <h2>Course</h2>
@@ -11,8 +10,8 @@
           <thead>
             <th><%= @course.name %></th>
             <th><%= @course.description %></th>
-            <th><%= "https://lewagon.oss-cn-beijing.aliyuncs.com/#{@course.photos[0].key}"%></th>
-            <th><%= @course.file %></th>
+            <th><%= image_tag("https://lewagon.oss-cn-beijing.aliyuncs.com/#{@course.photos[0].key}")%></th>
+            <th><%= video_tag("https://lewagon.oss-cn-beijing.aliyuncs.com/#{@course.file.key}")%></th>
         </tbody>
       </table>
     </div>
