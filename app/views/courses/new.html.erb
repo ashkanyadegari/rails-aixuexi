@@ -1,4 +1,17 @@
-course
+
+<%= simple_form_for @course do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.input :file, as: :file %>
+
+    <%= f.submit %>
+<% end %>
+
+<%= link_to 'Show', @course %>
+<%= link_to 'Back', courses_path %>
+
+<!-- course
 
 single file upload
 multi photo upload
@@ -14,4 +27,4 @@ submit
 course = course.new(....)
 course.attach
 course.attach
-.save
+.save -->
