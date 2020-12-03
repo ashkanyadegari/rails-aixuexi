@@ -1,1 +1,14 @@
-edit.html.erb
+<h1>Edit files</h1>
+
+<%= simple_form_for @course do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.input :file, as: :file %>
+
+    <%= f.submit %>
+<% end %>
+
+<%= link_to 'Show', course_path %>
+<%= link_to 'Back', courses_path %>
+

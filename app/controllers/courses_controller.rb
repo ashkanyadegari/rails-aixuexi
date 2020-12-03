@@ -1,18 +1,17 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :update, :edit, :destroy]
 def index
-  @course = Course.all
+  @courses = Course.all
 end
 
 def show
 end
 
 def new
-  @course = Course.new(course_params)
+  @course = Course.new
 end
 
 def create
-  p course_params
   @course = Course.new(course_params)
   @course.photos.attach(course_params[:photos])
   @course.file.attach(course_params[:file])
@@ -24,16 +23,12 @@ def create
 end
 
 def edit
-  if @course.edit(course_params)
-    render json: {course: @course, status: :edited}
-  else
-    render_error
-  end
 end
 
 def destroy
   @course.destroy
-  render json: {status: :deleted}
+  redirect_to courses_path, notice: "The resume #{@course.name} has been deleted."
+
 end
 
 def update
