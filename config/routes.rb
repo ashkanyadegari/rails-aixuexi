@@ -17,5 +17,6 @@ Rails.application.routes.draw do
     #   resources :choices
     end
   end
+  resources :courses
 end
 

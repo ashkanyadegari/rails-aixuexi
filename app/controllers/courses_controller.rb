@@ -12,9 +12,12 @@ def new
 end
 
 def create
+  p course_params
   @course = Course.new(course_params)
+  @course.photos.attach(course_params[:photos])
+  @course.file.attach(course_params[:file])
   if @course.save
-    render json: {status: :created}
+    render json: {course: @course, status: :created}
   else
     render_error
   end
@@ -44,7 +47,7 @@ end
 private
 
 def course_params
-  params.require(:course).permit(:title, :description, :file, photos: [])
+  params.require(:course).permit(:name, :description, :file, photos: [])
 end
 
 def set_course
