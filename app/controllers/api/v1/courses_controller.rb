@@ -7,7 +7,6 @@ class Api::V1::CoursesController < Api::V1::BaseController
   end
 
   def show
-    render json: @course
   end
 
   def update
