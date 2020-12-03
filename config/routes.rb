@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :courses, only: [:index, :show, :create, :destroy, :update]
     resources :answers, only: [:show, :create]
     resources :questions, only: [:index ]
+    post "/useranswer", to: "questions#useranswer"
     # get "/questions", to: "questions#actionname"
     # resrouces :
     #   # /answers/:id/questions
