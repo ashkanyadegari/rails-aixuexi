@@ -1,0 +1,18 @@
+<!-- show question, choices
+http://localhost:3000/courses/:id/questions
+@questions = Question.where(course_id: a)
+
+ -->
+<h1>Quiz</h1>
+
+<table>
+      <tr>Question:</tr>
+  <tbody>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.question %></td>
+          <td><%= link_to 'Show', question %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

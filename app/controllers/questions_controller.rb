@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :update, :edit, :destroy]
   def index
     course = params[:course_id]
-    @question = Question.where(course_id: course)
+    @questions = Question.where(course_id: course)
   end
 
   def show
