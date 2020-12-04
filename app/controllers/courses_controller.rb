@@ -16,7 +16,7 @@ def create
   @course.photos.attach(course_params[:photos])
   @course.file.attach(course_params[:file])
   if @course.save
-    render json: {course: @course, status: :created}
+    redirect_to courses_path
   else
     render_error
   end
