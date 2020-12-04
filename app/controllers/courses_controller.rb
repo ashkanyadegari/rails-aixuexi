@@ -27,8 +27,7 @@ end
 
 def destroy
   @course.destroy
-  redirect_to courses_path, notice: "The resume #{@course.name} has been deleted."
-
+  redirect_to courses_path, notice: "The course #{@course.name} has been deleted."
 end
 
 def update

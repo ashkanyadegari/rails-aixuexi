@@ -1,0 +1,7 @@
+<%= simple_form_for [@question, @choice] do |f| %>
+  <%= f.input :answer %>
+  <%= f.input :is_correct %>
+  <%= f.submit %>
+<% end %>
+<%= link_to 'Back', questions_path %>
+<%= link_to 'Create', questions_path %>
