@@ -24,6 +24,7 @@ class Api::V1::QuestionsController < Api::V1::BaseController
   def getresult
     @results = UserAnswer.where(user_id: params["user_id"].to_i)
     @result_list = @results.select { |element| element.question.course.id == params["course_id"].to_i}
+    @result_list = @result_list.last(4)
   end
 
   private
