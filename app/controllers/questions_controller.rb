@@ -10,14 +10,17 @@ class QuestionsController < ApplicationController
 
   def new
     @course = Course.find(params[:course_id])
+    p @course
     @question = Question.new
   end
 
   def create
     @question = Question.new(question_params)
+    @course = Course.find(params[:course_id])
+    @question.course = @course
     @question.save
 
-    redirect_to questions_path
+    redirect_to @question
 
     ## When you save it
     ## it should create a question first
@@ -25,17 +28,16 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-    if @question.edit(question_params)
+    @question.edit(question_params)
       render json: {question: @question, status: :edited}
-    else
-      render_error
-    end
   end
 
   def update
   end
 
   def destroy
+    @question.destroy
+    redirect_to questions_path, notice: "The question has been deleted."
   end
 
   private
