@@ -1,1 +1,24 @@
-<%= link_to 'edit' %>
+<!-- http://localhost:3000/courses/:id/questions/:id
+
+Shows THE question
+
+shows the choices with question_id (by default shows nothing, because you dont have choices)
+@choices = Choice.where(question)
+add new choice
+
+http://localhost:3000/questions/:id/choices/new
+
+
+Question: How do you become a green bar? -->
+
+
+
+
+<%= @question.question %>
+  <tr>Choices:</tr>
+    <br>
+      <% @question.choices.each do |choice| %>
+        <p><%= choice.answer %></p>
+    <% end %>
+
+<%= link_to 'New Choice', new_question_path %>
