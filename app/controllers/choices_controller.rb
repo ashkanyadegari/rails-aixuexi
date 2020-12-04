@@ -1,7 +1,8 @@
 class ChoicesController < ApplicationController
   before_action :set_choice, only: [:show, :update, :edit, :destroy]
   def index
-    @choice = Choice.all
+    @choices = Choice.all
+    p @choices
   end
 
   def show

@@ -21,7 +21,6 @@ sum = 0
   puts "#{course.name} got created"
 
   puts 'Destroying all questions'
-  Question.destroy_all
   4.times do
     question = Question.new(course_id: course.id, question: Faker::Book.title)
     question.save
