@@ -1,4 +1,4 @@
     json.extract! @course, :id, :name, :description
-    json.photos @course.photos.attachments.map { |photo| "https://lewagon.oss-cn-beijing.aliyuncs.com/#{photo.key}" }
-    # @course.file.service_url.blank? ? '' : json.files @course.file.service_url
+    json.photos @course.photos.attachments.map { |photo| photo.service_url }
+    json.files @video_url
 
