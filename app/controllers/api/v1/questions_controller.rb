@@ -9,16 +9,21 @@ class Api::V1::QuestionsController < Api::V1::BaseController
 
   def useranswer
     answers = params[:answer]
+    p answers
+
+
     answers.each do |answer|
       # ua = UserAnswer.new(answer)
       ua = UserAnswer.new(user_id: answer["user_id"], question_id: answer["question_id"], choice_id: answer["choice_id"])
       ua.save
+      p ua.errors
     end
     render json: {status: :OK}
   end
 
   def getresult
-    p params
+    @results = UserAnswer.where(user_id: params["user_id"].to_i)
+    @result_list = @results.select { |element| element.question.course.id == params["course_id"].to_i}
   end
 
   private
