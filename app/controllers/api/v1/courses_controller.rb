@@ -7,11 +7,12 @@ class Api::V1::CoursesController < Api::V1::BaseController
   end
 
   def show
-    # if !@course.file.service_url.attached?
-    #   @video_url = @course.file.service_url
-    # else
-    #   @video_url = ""
-    # end
+    if !@course.file.service_url.blank?
+      @video_url = @course.file.service_url
+    else
+      @video_url = ""
+    end
+      rescue NoMethodError => e
   end
 
   def update
