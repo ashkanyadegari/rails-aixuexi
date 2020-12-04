@@ -5,6 +5,11 @@ def index
 end
 
 def show
+    # if !@course.file.service_url.blank?
+    #   @video_url = @course.file.service_url
+    # else
+    #   @video_url = ""
+    # end
 end
 
 def new
