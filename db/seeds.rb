@@ -22,17 +22,17 @@ sum = 0
 
   puts 'Destroying all questions'
   4.times do
-    question = Question.new(course_id: course.id, question: Faker::Book.title)
+    question = Question.new(course_id: course.id, question: Faker::Lorem.question(word_count: 4))
     question.save
     puts "#{question.question} got created"
 
   puts 'Destroying all choices'
-    choice = Choice.new(question_id: question.id, answer: Faker::Creature::Animal.name, is_correct: true)
+    choice = Choice.new(question_id: question.id, answer: Faker::Books::Dune.quote, is_correct: true)
     choice.save
     puts "#{choice.answer} got created"
   p "the false is being created"
   3.times do
-    choice = Choice.new(question_id: question.id, answer: Faker::Creature::Animal.name, is_correct: false)
+    choice = Choice.new(question_id: question.id, answer: Faker::Books::Dune.quote, is_correct: false)
     choice.save
     puts "#{choice.answer} got created"
   end
