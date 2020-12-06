@@ -14,6 +14,8 @@ class Api::V1::QuestionsController < Api::V1::BaseController
 
     answers.each do |answer|
       # ua = UserAnswer.new(answer)
+      ans = UserAnswer.where(user_id: answer["user_id"], question_id: answer["question_id"])
+      ans.destroy_all
       ua = UserAnswer.new(user_id: answer["user_id"], question_id: answer["question_id"], choice_id: answer["choice_id"])
       ua.save
       p ua.errors
@@ -25,11 +27,24 @@ class Api::V1::QuestionsController < Api::V1::BaseController
     @results = UserAnswer.where(user_id: params["user_id"].to_i)
     @result_list = @results.select { |element| element.question.course.id == params["course_id"].to_i}
     @result_list = @result_list.last(4)
+    update_points(@results)
   end
 
   private
   def answer_params
     params.require(:answer).permit(:user_id, :course_id, :question_id)
+  end
+
+  def update_points(results)
+    sum = 0
+    results.each do |result|
+      if result.choice.is_correct
+        sum += 25
+      end
+    end
+    user = User.find(results.last.user_id)
+    user.user_points = sum
+    user.save
   end
 
 end
