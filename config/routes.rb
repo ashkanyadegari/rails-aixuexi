@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     namespace :api, defaults: { format: :json } do
     namespace :v1 do
     put "/login", to: "login#login"
-    resources :users, only: [:index, :show, :create]
+    resources :users, only: [:index, :show, :create, :update]
     resources :courses, only: [:index, :show, :create, :destroy, :update]
     resources :answers, only: [:show, :create]
     resources :questions, only: [:index ]

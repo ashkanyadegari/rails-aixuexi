@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_044037) do
+ActiveRecord::Schema.define(version: 2020_12_06_131809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,17 +54,19 @@ ActiveRecord::Schema.define(version: 2020_12_01_044037) do
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
-    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "description"
+    t.text "video"
+    t.boolean "wechat", default: false
   end
 
   create_table "ongoing_courses", force: :cascade do |t|
-    t.boolean "is_completed"
     t.bigint "user_id", null: false
     t.bigint "course_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_completed", default: false
     t.index ["course_id"], name: "index_ongoing_courses_on_course_id"
     t.index ["user_id"], name: "index_ongoing_courses_on_user_id"
   end
@@ -93,9 +95,9 @@ ActiveRecord::Schema.define(version: 2020_12_01_044037) do
     t.string "open_id"
     t.string "avatar"
     t.bigint "company_id"
-    t.integer "user_points"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_points", default: 0
     t.index ["company_id"], name: "index_users_on_company_id"
   end
 
