@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.6'
 
+gem 'rails_admin', '~> 2.0'
+
 gem 'rest-client', '~> 2.0.2'
 
 gem 'dotenv-rails', groups: [:development, :test]
@@ -30,6 +32,8 @@ gem 'activestorage-aliyun'
 gem 'faker'
 gem 'nokogiri'
 gem "open-uri"
+
+gem 'devise'
 
 
 # Use Active Storage variant
