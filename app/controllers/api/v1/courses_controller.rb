@@ -1,6 +1,6 @@
 class Api::V1::CoursesController < Api::V1::BaseController
   before_action :set_course, only: [:show, :edit, :destroy, :update]
-  skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy]
+  skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy, :joincourse, :getusercourses]
 
   def index
     @courses = Course.all
@@ -35,6 +35,20 @@ class Api::V1::CoursesController < Api::V1::BaseController
     else
       render_error
     end
+  end
+
+  def joincourse
+    p params
+    @start = OngoingCourse.new(user_id: params["user_id"], course_id: params["course_id"])
+    p @start.errors
+    @start.save
+    render json: {stat: @start, status: :works}
+  end
+
+  def getusercourses
+    p params
+    @user = User.find(params["user_id"])
+    @courses = OngoingCourse.where(user_id: params["user_id"])
   end
 
   private

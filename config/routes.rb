@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :questions, only: [:index ]
     post "/useranswer", to: "questions#useranswer"
     get "/useranswer", to: "questions#getresult"
+    post "/joincourse", to: "courses#joincourse"
+    get "/getusercourses", to: "courses#getusercourses"
     # get "/questions", to: "questions#actionname"
     # resrouces :
     #   # /answers/:id/questions
