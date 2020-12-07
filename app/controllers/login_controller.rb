@@ -16,7 +16,16 @@ URL = "https://api.weixin.qq.com/sns/jscode2session".freeze
   end
 
   def login
-    @user = User.find_or_create_by(open_id: wechat_user.fetch("openid"))
+    open_id = wechat_user.fetch("openid")
+    @user = User.find_by(open_id: open_id)
+    puts @user
+    if @user.nil?
+      @user = User.create(
+        email: open_id + '@aixuexi.com',
+        password: '123456',
+        open_id: open_id
+      )
+    end
     render json: {
       user: @user
     }
