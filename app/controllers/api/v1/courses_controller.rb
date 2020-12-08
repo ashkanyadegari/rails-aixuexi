@@ -3,7 +3,15 @@ class Api::V1::CoursesController < Api::V1::BaseController
   skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy, :joincourse, :getusercourses]
 
   def index
-    @courses = Course.all
+     if params[:user_id]
+      @courses = Course.where(user_id: params[:user_id])
+      render json: @courses #Just for testing
+    elsif params[:query].present?
+      @courses = Course.search_by_name_and_description(params[:query])
+    else
+      @courses = Course.all
+      render json: @courses #Just for testing
+    end
   end
 
   def show
