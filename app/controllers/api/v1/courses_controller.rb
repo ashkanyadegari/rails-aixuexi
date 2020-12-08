@@ -5,12 +5,12 @@ class Api::V1::CoursesController < Api::V1::BaseController
   def index
      if params[:user_id]
       @courses = Course.where(user_id: params[:user_id])
-      render json: @courses #Just for testing
+      # render json: @courses #Just for testing
     elsif params[:query].present?
       @courses = Course.search_by_name_and_description(params[:query])
     else
       @courses = Course.all
-      render json: @courses #Just for testing
+      # render json: @courses #Just for testing
     end
   end
 
