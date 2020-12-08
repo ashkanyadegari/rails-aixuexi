@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_07_041525) do
+ActiveRecord::Schema.define(version: 2020_12_08_104538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(version: 2020_12_07_041525) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "chapters", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_completed", default: false
+  end
+
   create_table "choices", force: :cascade do |t|
     t.string "answer"
     t.boolean "is_correct"
@@ -59,6 +67,8 @@ ActiveRecord::Schema.define(version: 2020_12_07_041525) do
     t.text "description"
     t.text "video"
     t.boolean "wechat", default: false
+    t.bigint "chapter_id"
+    t.index ["chapter_id"], name: "index_courses_on_chapter_id"
   end
 
   create_table "ongoing_courses", force: :cascade do |t|
@@ -111,6 +121,7 @@ ActiveRecord::Schema.define(version: 2020_12_07_041525) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "choices", "questions"
+  add_foreign_key "courses", "chapters"
   add_foreign_key "ongoing_courses", "courses"
   add_foreign_key "ongoing_courses", "users"
   add_foreign_key "questions", "courses"
