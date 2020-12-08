@@ -15,7 +15,7 @@ RailsAdmin.config do |config|
     end
   end
 
-  config.included_models = [ "Company", "Course", "Question","User","Choice" ]
+  config.included_models = [ "Company", "Course", "Question","User","Choice","Chapter" ]
 
 
   ## == CancanCan ==
