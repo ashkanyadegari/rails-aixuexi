@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     get "/getusercourses", to: "courses#getusercourses"
     get "/getcolleagues", to: "companies#getcolleagues"
     get "/getcompany", to: "companies#getcompany"
+    get "/userstats", to: "courses#userstats"
     # get "/questions", to: "questions#actionname"
     # resrouces :
     #   # /answers/:id/questions
