@@ -26,8 +26,20 @@ class Api::V1::QuestionsController < Api::V1::BaseController
   def getresult
     @results = UserAnswer.where(user_id: params["user_id"].to_i)
     @result_list = @results.select { |element| element.question.course.id == params["course_id"].to_i}
-    @result_list = @result_list.last(4)
+    @result_list = @result_list.last(4) ## Should be dynamic
+
+    @sum = 0
+    @result_list.each do |result|
+      if result.choice.is_correct
+        @sum += 25
+      end
+    end
+    @points = @sum
+
     update_points(@results)
+    @course = OngoingCourse.where(course_id: params["course_id"].to_i)
+    @course[0].is_completed = true
+    @course[0].save
   end
 
   private
