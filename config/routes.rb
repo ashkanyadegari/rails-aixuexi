@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :courses, only: [:index, :show, :create, :destroy, :update]
     resources :answers, only: [:show, :create]
     resources :questions, only: [:index ]
+    resources :chapters
     post "/useranswer", to: "questions#useranswer"
     get "/useranswer", to: "questions#getresult"
     post "/joincourse", to: "courses#joincourse"
