@@ -7,3 +7,4 @@ json.results do
     json.answer Question.find(result.question_id).choices.where(is_correct: true)
   end
 end
+json.points @points
