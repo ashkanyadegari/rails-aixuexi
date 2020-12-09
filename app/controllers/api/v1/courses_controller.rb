@@ -61,7 +61,11 @@ class Api::V1::CoursesController < Api::V1::BaseController
 
   def userstats
     p params
-    @courses = OngoingCourse.where(user_id: params["user_id"], is_completed: true) == [] ? 0 : OngoingCourse.where(user_id: params["user_id"], is_completed: true)
+    @courses = OngoingCourse.where(user_id: params["user_id"], is_completed: true)
+    p @courses
+    p @courses
+    p @courses
+    p @courses
     @quizzes = UserAnswer.where(user_id: params["user_id"])
   end
 
